@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02 -->
+<html lang="en" dir="ltr" class="js desktop"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Regresja liniowa [MDIG Group]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="keywords" content="teaching,air-ml,2017l,labs,lab02">
+<link rel="search" type="application/opensearchdescription+xml" href="http://home.agh.edu.pl/~mdig/dokuwiki/lib/exe/opensearch.php" title="MDIG Group">
+<link rel="start" href="http://home.agh.edu.pl/~mdig/dokuwiki/">
+<link rel="contents" href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=index" title="Sitemap">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="http://home.agh.edu.pl/~mdig/dokuwiki/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://home.agh.edu.pl/~mdig/dokuwiki/feed.php?mode=list&amp;ns=teaching:air-ml:2017l:labs">
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?do=export_xhtml&amp;id=teaching:air-ml:2017l:labs:lab02">
+<link rel="alternate" type="text/plain" title="Wiki Markup" href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?do=export_raw&amp;id=teaching:air-ml:2017l:labs:lab02">
+<link rel="canonical" href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02">
+<link rel="stylesheet" type="text/css" href="./Regresja liniowa [MDIG Group]_files/css.php">
+<!--[if gte IE 9]><!-->
+<script type="text/javascript">/*<![CDATA[*/var NS='teaching:air-ml:2017l:labs';var SIG=' --- //[[dummy@dot.com|Student]] 2018/03/13 19:01//';var JSINFO = {"id":"teaching:air-ml:2017l:labs:lab02","namespace":"teaching:air-ml:2017l:labs","plugin_folded":{"hide":"hide","reveal":"reveal"}};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./Regresja liniowa [MDIG Group]_files/jquery.php"></script>
+<script type="text/javascript" charset="utf-8" src="./Regresja liniowa [MDIG Group]_files/js.php"></script><style type="text/css" media="screen"><!--/*--><![CDATA[/*><!--*/ .folded.hidden { display: none; } .folder .indicator { visibility: visible; } /*]]>*/--></style><style id="iris-css">.iris-picker{display:block;position:relative}.iris-picker,.iris-picker *{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input+.iris-picker{margin-top:4px}.iris-error{background-color:#ffafaf}.iris-border{border-radius:3px;border:1px solid #aaa;width:200px;background-color:#fff}.iris-picker-inner{position:absolute;top:0;right:0;left:0;bottom:0}.iris-border .iris-picker-inner{top:10px;right:10px;left:10px;bottom:10px}.iris-picker .iris-square-inner{position:absolute;left:0;right:0;top:0;bottom:0}.iris-picker .iris-square,.iris-picker .iris-slider,.iris-picker .iris-square-inner,.iris-picker .iris-palette{border-radius:3px;box-shadow:inset 0 0 5px rgba(0,0,0,.4);height:100%;width:12.5%;float:left;margin-right:5%}.iris-picker .iris-square{width:76%;margin-right:10%;position:relative}.iris-picker .iris-square-inner{width:auto;margin:0}.iris-ie-9 .iris-square,.iris-ie-9 .iris-slider,.iris-ie-9 .iris-square-inner,.iris-ie-9 .iris-palette{box-shadow:none;border-radius:0}.iris-ie-9 .iris-square,.iris-ie-9 .iris-slider,.iris-ie-9 .iris-palette{outline:1px solid rgba(0,0,0,.1)}.iris-ie-lt9 .iris-square,.iris-ie-lt9 .iris-slider,.iris-ie-lt9 .iris-square-inner,.iris-ie-lt9 .iris-palette{outline:1px solid #aaa}.iris-ie-lt9 .iris-square .ui-slider-handle{outline:1px solid #aaa;background-color:#fff;-ms-filter:"alpha(Opacity=30)"}.iris-ie-lt9 .iris-square .iris-square-handle{background:0;border:3px solid #fff;-ms-filter:"alpha(Opacity=50)"}.iris-picker .iris-strip{margin-right:0;position:relative}.iris-picker .iris-strip .ui-slider-handle{position:absolute;background:0;margin:0;right:-3px;left:-3px;border:4px solid #aaa;border-width:4px 3px;width:auto;height:6px;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.2);opacity:.9;z-index:5;cursor:ns-resize}.iris-strip .ui-slider-handle:before{content:" ";position:absolute;left:-2px;right:-2px;top:-3px;bottom:-3px;border:2px solid #fff;border-radius:3px}.iris-picker .iris-slider-offset{position:absolute;top:11px;left:0;right:0;bottom:-3px;width:auto;height:auto;background:transparent;border:0;border-radius:0}.iris-picker .iris-square-handle{background:transparent;border:5px solid #aaa;border-radius:50%;border-color:rgba(128,128,128,.5);box-shadow:none;width:12px;height:12px;position:absolute;left:-10px;top:-10px;cursor:move;opacity:1;z-index:10}.iris-picker .ui-state-focus .iris-square-handle{opacity:.8}.iris-picker .iris-square-handle:hover{border-color:#999}.iris-picker .iris-square-value:focus .iris-square-handle{box-shadow:0 0 2px rgba(0,0,0,.75);opacity:.8}.iris-picker .iris-square-handle:hover::after{border-color:#fff}.iris-picker .iris-square-handle::after{position:absolute;bottom:-4px;right:-4px;left:-4px;top:-4px;border:3px solid #f9f9f9;border-color:rgba(255,255,255,.8);border-radius:50%;content:" "}.iris-picker .iris-square-value{width:8px;height:8px;position:absolute}.iris-ie-lt9 .iris-square-value,.iris-mozilla .iris-square-value{width:1px;height:1px}.iris-palette-container{position:absolute;bottom:0;left:0;margin:0;padding:0}.iris-border .iris-palette-container{left:10px;bottom:10px}.iris-picker .iris-palette{margin:0;cursor:pointer}.iris-square-handle,.ui-slider-handle{border:0;outline:0}</style>
+<script type="text/x-mathjax-config;executed=true">/*<![CDATA[*/MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+        displayMath: [ ["$$","$$"], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    jax: ["input/TeX","output/HTML-CSS"],
+    TeX: { equationNumbers: {autoNumber: "AMS"} },
+    displayAlign: "left"
+});
+/*!]]>*/</script>
+<script src="./Regresja liniowa [MDIG Group]_files/MathJax.js.pobrane" id=""></script>
+<!--<![endif]-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" href="http://home.agh.edu.pl/~mdig/dokuwiki/lib/exe/fetch.php?media=wiki:favicon.ico">
+<link rel="apple-touch-icon" href="http://home.agh.edu.pl/~mdig/dokuwiki/lib/tpl/dokuwiki/images/apple-touch-icon.png">
+    <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.1') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.1') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.1') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_dokuwiki loggedIn   showSidebar hasSidebar">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header"><div class="pad group">
+
+    
+    <div class="headings group">
+        <ul class="a11y skip">
+            <li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02#dokuwiki__content">skip to content</a></li>
+        </ul>
+
+        <h1><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=start" accesskey="h" title="[H]"><img src="./Regresja liniowa [MDIG Group]_files/fetch.php" width="1" height="1" alt=""> <span>MDIG Group</span></a></h1>
+            </div>
+
+    <div class="tools group">
+        <!-- USER TOOLS -->
+                    <div id="dokuwiki__usertools">
+                <h3 class="a11y">User Tools</h3>
+                <ul>
+                    <li class="user">Logged in as: <bdi>Student</bdi> (<bdi>student</bdi>)</li><li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=profile" class="action profile" rel="nofollow" title="Update Profile">Update Profile</a></li><li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=logout&amp;sectok=85937104fd99e20a87fe6f0a64f29f5d" class="action logout" rel="nofollow" title="Log Out">Log Out</a></li>                </ul>
+            </div>
+        
+        <!-- SITE TOOLS -->
+        <div id="dokuwiki__sitetools">
+            <h3 class="a11y">Site Tools</h3>
+            <form action="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=start" accept-charset="utf-8" class="search" id="dw__search" method="get" role="search"><div class="no"><input type="hidden" name="do" value="search"><input type="text" placeholder="Search" id="qsearch__in" accesskey="f" name="id" class="edit" title="[F]"><button type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup" style="display: none;"></div></div></form>            <div class="mobileTools">
+                <form action="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php" method="get" accept-charset="utf-8"><div class="no"><input type="hidden" name="id" value="teaching:air-ml:2017l:labs:lab02"><input type="hidden" name="sectok" value="85937104fd99e20a87fe6f0a64f29f5d"><select name="do" class="edit quickselect" title="Tools"><option value="">Tools</option><optgroup label="Page Tools"><option value="edit">Show pagesource</option><option value="revisions">Old revisions</option><option value="backlink">Backlinks</option></optgroup><optgroup label="Site Tools"><option value="recent">Recent Changes</option><option value="media">Media Manager</option><option value="index">Sitemap</option></optgroup><optgroup label="User Tools"><option value="logout">Log Out</option><option value="profile">Update Profile</option></optgroup></select><button type="submit" style="display: none;">&gt;</button></div></form>            </div>
+            <ul>
+                <li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent Changes [R]">Recent Changes</a></li><li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=media&amp;ns=teaching%3Aair-ml%3A2017l%3Alabs" class="action media" rel="nofollow" title="Media Manager">Media Manager</a></li><li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=index" class="action index" accesskey="x" rel="nofollow" title="Sitemap [X]">Sitemap</a></li>            </ul>
+        </div>
+
+    </div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=start" class="wikilink1" title="start">Medical Digital Imaging Group</a></bdi></span> » <bdi><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:start" class="wikilink1" title="teaching:start">Dydaktyka</a></bdi> » <bdi><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:start" class="wikilink1" title="teaching:air-ml:start">Uczenie maszynowe</a></bdi> » <bdi><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l" class="wikilink1" title="teaching:air-ml:2017l">Uczenie maszynowe – 2017/18</a></bdi> » <bdi><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:start" class="wikilink1" title="teaching:air-ml:2017l:labs:start">Treść laboratoriów</a></bdi> » <bdi><span class="curid"><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02" class="wikilink1" title="teaching:air-ml:2017l:labs:lab02">Regresja liniowa</a></span></bdi></div>
+                                </div>
+    
+
+
+    <hr class="a11y">
+</div></div><!-- /header -->
+
+        <div class="wrapper group">
+
+                            <!-- ********** ASIDE ********** -->
+                <div id="dokuwiki__aside"><div class="pad aside include group">
+                    <h3 class="toggle open" style="cursor: pointer; display: none;"><strong><span>−</span></strong>Sidebar</h3>
+                    <div class="content" style="" aria-expanded="true"><div class="group">
+                                                                        
+<p>
+<strong><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=start" class="wikilink1" title="start">Home page</a></strong> <br>
+
+</p>
+<hr>
+
+<p>
+<strong><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:start" class="wikilink1" title="teaching:start">Dydaktyka</a> – bieżące</strong>
+</p>
+<ul>
+<li class="level1"><div class="li"> <span class="curid"><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:inf1:2017l" class="wikilink1" title="teaching:inf1:2017l">Inf1</a></span></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l" class="wikilink1" title="teaching:air-ml:2017l">ML</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:inf-advml:2017l" class="wikilink1" title="teaching:inf-advml:2017l">AdvML</a></div>
+</li>
+</ul>
+                                            </div></div>
+                </div></div><!-- /aside -->
+            
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <div class="pageId"><span>teaching:air-ml:2017l:labs:lab02</span></div>
+
+                <div class="page group" style="min-height: 121.25px;">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc">
+<h3 class="toggle open" style="cursor: pointer;"><strong><span>−</span></strong>Table of Contents</h3>
+<div style="" aria-expanded="true">
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02#regresja_liniowa">Regresja liniowa</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02#zadania">Zadania</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02#prosta_regresja_liniowa">Prosta regresja liniowa</a></div></li>
+<li class="level3"><div class="li"><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02#regresja_liniowa_wielu_zmiennych">Regresja liniowa wielu zmiennych</a></div></li>
+<li class="level3"><div class="li"><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02#regresja_liniowa_wielu_zmiennych1">Regresja liniowa wielu zmiennych</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="regresja_liniowa">Regresja liniowa</h1>
+<div class="level1">
+
+<p>
+Wykład: <strong><a href="http://home.agh.edu.pl/~mdig/dokuwiki/lib/exe/fetch.php?media=teaching:air-ml:2017l:labs:air_ml_02_linear-regression.pdf" class="media mediafile mf_pdf" title="teaching:air-ml:2017l:labs:air_ml_02_linear-regression.pdf (936.1 KB)">slajdy</a></strong>
+</p>
+
+</div>
+
+<h2 class="sectionedit2" id="zadania">Zadania</h2>
+<div class="level2">
+
+<p>
+W pierwszych dwóch zadaniach będziesz analizować zbiór danych <a href="http://lib.stat.cmu.edu/datasets/boston" class="urlextern" title="http://lib.stat.cmu.edu/datasets/boston" rel="nofollow">Boston</a> zawierający informację o średniej wartości domów (cecha <code>MEDV</code>) dla 506 osiedli w rejonie Bostonu. Będziesz próbować przewidzieć tę wartość na podstawie parametrów domu i osiedla, np. średniej liczbie pokoi (cecha <code>RM</code>), wieku domu (cecha <code>AGE</code>), bądź odsetek gospodarstw domowych o niskim statusie socjoekonomicznym (cecha <code>LSTAT</code>).
+</p>
+
+<p>
+W ostatnim zadaniu przeanalizujesz zbiór danych <a href="https://cran.r-project.org/web/packages/ISLR/ISLR.pdf" class="urlextern" title="https://cran.r-project.org/web/packages/ISLR/ISLR.pdf" rel="nofollow">Carseats</a> zawierający informację o wynikach sprzedaży fotelików samochodowych. Zawiera on cechy jakościowe nominalne, np. jakość umiejscowienia regału z fotelikami (cecha <code>ShelveLoc</code>).
+</p>
+<hr>
+
+<p>
+Szkielety zadań: <a href="https://bitbucket.org/mdig-agh/air_ml_lab_exercises_matlab/downloads/" class="urlextern" title="https://bitbucket.org/mdig-agh/air_ml_lab_exercises_matlab/downloads/" rel="nofollow">air_ml_lab_exercises_matlab (bitbucket.org)</a>
+</p>
+
+<p>
+Zbiór <em>Boston</em> w formacie CSV: <a href="http://home.agh.edu.pl/~mdig/dokuwiki/lib/exe/fetch.php?media=teaching:air-ml:datasets:boston.zip" class="media mediafile mf_zip" title="teaching:air-ml:datasets:boston.zip (15.7 KB)">boston.zip</a> <br>
+
+Zbiór <em>Carseats</em> w formacie CSV: <a href="http://home.agh.edu.pl/~mdig/dokuwiki/lib/exe/fetch.php?media=teaching:air-ml:datasets:carseats.zip" class="media mediafile mf_zip" title="teaching:air-ml:datasets:carseats.zip (5.8 KB)">carseats.zip</a>
+</p>
+
+</div>
+
+<h3 class="sectionedit3" id="prosta_regresja_liniowa">Prosta regresja liniowa</h3>
+<div class="level3">
+
+<p>
+Plik: <code>lr_slr.m</code>
+</p>
+
+<p>
+W tym zadaniu stworzysz model regresji liniowej przewidującej średnią wartość domu na podstawie odsetka gospodarstw domowych o niskim statusie socjoekonomicznym na danym osiedlu.
+</p>
+
+<p>
+Wczytaj zbiór jako tabelę (zob. <code>readtable()</code>). <br>
+
+Utwórz kopię zbioru zawierającą jedynie cechy, które chcemy uwzględnić w tym modelu regresji:
+</p>
+<pre class="code matlab">boston_subset = boston<span class="br0">(</span>:, <span class="br0">{</span><span class="co2">'MEDV'</span>,<span class="co2">'LSTAT'</span><span class="br0">}</span><span class="br0">)</span>;</pre>
+
+<p>
+Dokonaj wizualizacji danych (zob. <code>scatter()</code>).
+</p>
+
+<p>
+Dopasuj model prostej regresji liniowej – zmienna objaśniana (<em>response</em>): <code>MEDV</code>, zmienna objaśniająca: <code>LSTAT</code> (zob. <code>fitlm()</code>). Dla czytelności kodu, dokonaj jawnej specyfikacji modelu regresji podając argument dla parametru <code>modelspec</code> z użyciem <a href="https://www.mathworks.com/help/stats/fitlm.html#bt0co5g-1" class="urlextern" title="https://www.mathworks.com/help/stats/fitlm.html#bt0co5g-1" rel="nofollow">składni Wilkinsona</a> (zob. <a href="https://www.mathworks.com/help/stats/wilkinson-notation.html#bur8jtd-1" class="urlextern" title="https://www.mathworks.com/help/stats/wilkinson-notation.html#bur8jtd-1" rel="nofollow">przykład</a>).<br>
+
+Wyświetl statystyki modelu (m.in.: p-values, standardowe błędy dla współczynników, statystyka <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msup&gt;&lt;mi&gt;R&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 1.432em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.193em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.193em, 1001.19em, 2.384em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="msubsup" id="MathJax-Span-3"><span style="display: inline-block; position: relative; width: 1.193em; height: 0px;"><span style="position: absolute; clip: rect(3.158em, 1000.78em, 4.17em, -999.997em); top: -3.985em; left: 0em;"><span class="mi" id="MathJax-Span-4" style="font-family: MathJax_Math-italic;">R</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; top: -4.342em; left: 0.777em;"><span class="mn" id="MathJax-Span-5" style="font-size: 70.7%; font-family: MathJax_Main;">2</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 1.146em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>R</mi><mn>2</mn></msup></math></span></span><script type="math/tex" id="MathJax-Element-1">R^2</script> i statystyka <em>F</em> dla modelu):
+</p>
+<pre class="code matlab"><a href="http://www.mathworks.com/access/helpdesk/help/techdoc/ref/disp.html"><span class="kw2">disp</span></a><span class="br0">(</span>lm<span class="br0">)</span></pre>
+
+<p>
+Wyznacz 95% przedziały ufności dla oszacowanych wartości współczynników (zob. <code>coefCI()</code>). <br>
+
+Zaznacz na wykresie prostą regresji wraz z granicami przedziałów ufności (zob. <a href="https://www.mathworks.com/matlabcentral/answers/55540-plot-confidence-interval-for-the-slope#answer_67351" class="urlextern" title="https://www.mathworks.com/matlabcentral/answers/55540-plot-confidence-interval-for-the-slope#answer_67351" rel="nofollow">MATLAB Answers</a>, <code>hold on</code>, <code>hold off</code>). <br>
+
+Zauważ, że na podstawie samego wykresu danych mamy przesłanki świadczące o nieliniowej zależności między <code>MDEV</code> a <code>LSTAT</code> – bardzo duża liczba obserwacji znajduje się daleko poza granicami przedziału ufności. Zajmiemy się tym w kolejnym ćwiczeniu.
+</p>
+
+<p>
+Wyświetl wykres <em>normal probability plot of residuals</em>:
+</p>
+<pre class="code matlab">plotResiduals<span class="br0">(</span>lm,<span class="co2">'probability'</span><span class="br0">)</span></pre>
+
+<p>
+Gdyby między <code>MDEV</code> i <code>LSTAT</code> faktycznie zachodziła zależność liniowa, różnice <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;msub&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mover&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x005E;&lt;/mo&gt;&lt;/mover&gt;&lt;/mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-6" style="width: 6.193em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.122em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.253em, 1005.12em, 2.622em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-7"><span class="msubsup" id="MathJax-Span-8"><span style="display: inline-block; position: relative; width: 0.777em; height: 0px;"><span style="position: absolute; clip: rect(3.396em, 1000.42em, 4.17em, -999.997em); top: -3.985em; left: 0em;"><span class="mi" id="MathJax-Span-9" style="font-family: MathJax_Math-italic;">e</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; top: -3.807em; left: 0.479em;"><span class="mi" id="MathJax-Span-10" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span></span></span><span class="mo" id="MathJax-Span-11" style="font-family: MathJax_Main; padding-left: 0.301em;">=</span><span class="msubsup" id="MathJax-Span-12" style="padding-left: 0.301em;"><span style="display: inline-block; position: relative; width: 0.836em; height: 0px;"><span style="position: absolute; clip: rect(3.396em, 1000.48em, 4.348em, -999.997em); top: -3.985em; left: 0em;"><span class="mi" id="MathJax-Span-13" style="font-family: MathJax_Math-italic;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; top: -3.807em; left: 0.479em;"><span class="mi" id="MathJax-Span-14" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span></span></span><span class="mo" id="MathJax-Span-15" style="font-family: MathJax_Main; padding-left: 0.241em;">−</span><span class="msubsup" id="MathJax-Span-16" style="padding-left: 0.241em;"><span style="display: inline-block; position: relative; width: 0.896em; height: 0px;"><span style="position: absolute; clip: rect(3.039em, 1000.48em, 4.348em, -999.997em); top: -3.985em; left: 0em;"><span class="texatom" id="MathJax-Span-17"><span class="mrow" id="MathJax-Span-18"><span class="munderover" id="MathJax-Span-19"><span style="display: inline-block; position: relative; width: 0.598em; height: 0px;"><span style="position: absolute; clip: rect(3.396em, 1000.48em, 4.348em, -999.997em); top: -3.985em; left: 0.003em;"><span class="mi" id="MathJax-Span-20" style="font-family: MathJax_Math-italic;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; clip: rect(3.098em, 1000.42em, 3.634em, -999.997em); top: -4.045em; left: 0.063em;"><span class="mo" id="MathJax-Span-21" style="font-family: MathJax_Main;">^</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span><span style="position: absolute; top: -3.747em; left: 0.598em;"><span class="mi" id="MathJax-Span-22" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span style="display: inline-block; width: 0px; height: 3.991em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left: 0px solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>e</mi><mi>i</mi></msub><mo>=</mo><msub><mi>y</mi><mi>i</mi></msub><mo>−</mo><msub><mrow class="MJX-TeXAtom-ORD"><mover><mi>y</mi><mo stretchy="false">^</mo></mover></mrow><mi>i</mi></msub></math></span></span><script type="math/tex" id="MathJax-Element-2">e_i = y_i - \hat{y}_i</script> (tj. reszty) wynikałaby jedynie z błędu <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-23" style="width: 0.539em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.42em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.61em, 1000.42em, 2.384em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-24"><span class="mi" id="MathJax-Span-25" style="font-family: MathJax_Math-italic;">ϵ</span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 0.646em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ϵ</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">\epsilon</script> obecnego w rzeczywistym modelu (dla populacji) – błędu o którym zakładamy, że ma rozkład normalny. Na wykresie takie dane o rozkładzie normalnym powinny być rozmieszczone wzdłuż skośnej linii. Ponieważ w naszym przypadku obserwujemy dużo znaczących reszt w “ogonach” rozkładu (punkty są znacznie oddalone od skośnej linii), jest to mocna przesłanka do stwierdzenia nieliniowej zależności między <code>MDEV</code> i <code>LSTAT</code>.
+</p>
+
+</div>
+
+<h3 class="sectionedit4" id="regresja_liniowa_wielu_zmiennych">Regresja liniowa wielu zmiennych</h3>
+<div class="level3">
+
+<p>
+Plik: <code>lr_mlr.m</code>
+</p>
+
+<p>
+W tym zadaniu stworzysz model regresji liniowej przewidującej średnią wartość domu na podstawie odsetka gospodarstw domowych o niskim statusie socjoekonomicznym na danym osiedlu oraz wieku domu.
+</p>
+
+<p>
+Wczytaj zbiór jako tabelę (zob. <code>readtable()</code>). <br>
+
+Utwórz kopię zbioru zawierającą jedynie cechy istotne:
+</p>
+<pre class="code matlab">boston_subset = boston<span class="br0">(</span>:, <span class="br0">{</span><span class="co2">'MEDV'</span>,<span class="co2">'LSTAT'</span>,<span class="co2">'AGE'</span><span class="br0">}</span><span class="br0">)</span>;</pre>
+
+<p>
+Dokonaj wizualizacji danych (zob. <code>scatter3()</code>).
+</p>
+
+<p>
+Dopasuj model prostej regresji liniowej – zmienna objaśniana: <code>MEDV</code>, zmienne objaśniające: <code>LSTAT</code>, <code>AGE</code>.<br>
+
+Wyświetl statystyki modelu. <br>
+
+Zaznacz na wykresie płaszczyznę regresji:
+</p>
+<ul>
+<li class="level1"><div class="li"> użyj <code>meshgrid()</code>, aby wyznaczyć siatkę wartości na płaszczyźnie wyznaczonej przez <code>LSTAT</code> i <code>AGE</code> (<a href="https://www.mathworks.com/help/stats/regress.html#btzaffj" class="urlextern" title="https://www.mathworks.com/help/stats/regress.html#btzaffj" rel="nofollow">przykład</a>)</div>
+</li>
+<li class="level1"><div class="li"> przekaż dane uzyskane za pomocą <code>meshgrid()</code> do funkcji <code><a href="https://www.mathworks.com/help/stats/compactlinearmodel.predict.html" class="urlextern" title="https://www.mathworks.com/help/stats/compactlinearmodel.predict.html" rel="nofollow">predict()</a></code> (<a href="https://www.mathworks.com/help/stats/compactlinearmodel.predict.html#bty08sl-2" class="urlextern" title="https://www.mathworks.com/help/stats/compactlinearmodel.predict.html#bty08sl-2" rel="nofollow">przykład</a>)</div>
+</li>
+<li class="level1"><div class="li"> wyświetl powierzchnię regresji np. za pomocą <code>surf()</code></div>
+</li>
+</ul>
+
+<p>
+<em class="u">Nie zaznaczaj</em> granic przedziałów ufności, gdyż w MATLAB-ie ciężko wizualizować bryły…
+</p>
+
+<p>
+Utwórz nowy model regresji liniowej, wzbogacony o interakcję między <code>LSTAT</code> i <code>AGE</code> (tj. w modelu zostanie uwzględniony wyraz <span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;L&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;S&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;T&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;A&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;T&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;A&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;G&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;E&lt;/mi&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-26" style="width: 8.217em; display: inline-block;"><span style="display: inline-block; position: relative; width: 6.848em; height: 0px; font-size: 120%;"><span style="position: absolute; clip: rect(1.313em, 1006.85em, 2.384em, -999.997em); top: -2.199em; left: 0em;"><span class="mrow" id="MathJax-Span-27"><span class="texatom" id="MathJax-Span-28"><span class="mrow" id="MathJax-Span-29"><span class="mi" id="MathJax-Span-30" style="font-family: MathJax_Main;">L</span><span class="mi" id="MathJax-Span-31" style="font-family: MathJax_Main;">S</span><span class="mi" id="MathJax-Span-32" style="font-family: MathJax_Main;">T</span><span class="mi" id="MathJax-Span-33" style="font-family: MathJax_Main;">A</span><span class="mi" id="MathJax-Span-34" style="font-family: MathJax_Main;">T</span></span></span><span class="mo" id="MathJax-Span-35" style="font-family: MathJax_Main; padding-left: 0.241em;">×</span><span class="texatom" id="MathJax-Span-36" style="padding-left: 0.241em;"><span class="mrow" id="MathJax-Span-37"><span class="mi" id="MathJax-Span-38" style="font-family: MathJax_Main;">A</span><span class="mi" id="MathJax-Span-39" style="font-family: MathJax_Main;">G</span><span class="mi" id="MathJax-Span-40" style="font-family: MathJax_Main;">E</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 1.004em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="normal">L</mi><mi mathvariant="normal">S</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">T</mi></mrow><mo>×</mo><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="normal">A</mi><mi mathvariant="normal">G</mi><mi mathvariant="normal">E</mi></mrow></math></span></span><script type="math/tex" id="MathJax-Element-4">\mathrm{LSTAT} \times \mathrm{AGE}</script> – iloczyn tych dwóch cech).   Musisz dokonać jawnej specyfikacji modelu regresji podając argument dla parametru <code>modelspec</code> z użyciem <a href="https://www.mathworks.com/help/stats/fitlm.html#bt0co5g-1" class="urlextern" title="https://www.mathworks.com/help/stats/fitlm.html#bt0co5g-1" rel="nofollow">składni Wilkinsona</a>. <br>
+
+Wyświetl statystyki tego modelu. <br>
+
+Zwróć uwagę na p-wartości dla zmiennej objaśniającej <code>AGE</code> – w modelu z interakcją jest ona bardzo wysoka, zwłaszcza w porównaniu z modelem bez interakcji! <br>
+
+Zaznacz na wykresie powierzchnię regresji tego modelu.
+</p>
+
+<p>
+Utwórz nowy model regresji liniowej, zawierający nieliniową transformację zmiennej objaśniającej (<code>LSTAT</code> i <code>LSTAT^2</code>). <br>
+
+Wyświetl statystyki tego modelu. <br>
+
+Zwróć uwagę na bardzo niską p-wartość dla <code>LSTAT^2</code> (niemal 0) – sugeruje ona, że uwzględnienie tego składnika poprawi skuteczność predykcyjną modelu. <br>
+
+Zaznacz na wykresie krzywą regresji tego modelu.
+</p>
+
+<p>
+Porównaj model prosty (<code>MEDV~LSTAT</code>) oraz nieliniowy (<code>'MEDV~LSTAT+LSTAT^2</code>) z użyciem testu ANOVA (zob. <code>anova()</code>). <br>
+
+Zwróć uwagę na wartości dla składnika <code>LSTAT^2</code> – wysoka wartość statystyki <em>F</em> w połączeniu z niemal zerową p-wartością stanowią mocny dowód wyższości stworzonego modelu nieliniowego nad modelem liniowym (co nie jest zaskakujące, gdyż nieliniową zależność widzieliśmy już na wykresie danych i wykresie reszt…).
+</p>
+
+</div>
+
+<h3 class="sectionedit5" id="regresja_liniowa_wielu_zmiennych1">Regresja liniowa wielu zmiennych</h3>
+<div class="level3">
+
+<p>
+Plik: <code>lr_cat.m</code>
+</p>
+
+<p>
+W tym zadaniu stworzysz model regresji liniowej przewidujący wartość sprzedaży fotelików samochodowych m.in. na podstawie cech jakościowych nominalnych.
+</p>
+
+<p>
+Dopasuj model regresji liniowej o następującej specyfikacji:
+</p>
+<pre class="code">Sales~CompPrice+Income+Advertising+Population+Price'+ShelveLoc+Age+Education+Urban+US+Income:Advertising+Price:Age</pre>
+
+<p>
+Wyświetl statystyki modelu.
+</p>
+
+<p>
+Zwróć uwagę, że MATLAB sam stworzył pomocniczą zmienną zerojedynkową <code>ShelveLoc_Good</code> (przyjmuje wartość 1, gdy umiejscowienie jest dobre; 0 w przeciwnym przypadku) oraz analogiczną zmienną zerojedynkową <code>ShelveLoc_Medium</code>. Złe umiejscowienie (wartość <code>Bad</code>) odpowiada sytuacji, gdy jednocześnie <code>ShelveLoc_Good = 0</code> i <code>ShelveLoc_Medium = 0</code>. <br>
+
+Dodatni współczynnik przy <code>ShelveLoc_Good</code> świadczy, że dobre umiejscowienie regału wpływa korzystnie na sprzedaż. Współczynnik przy <code>ShelveLoc_Medium</code> również jest dodatni, jednak ma mniejszą wartość niż w przypadku <code>ShelveLoc_Good</code>, zatem średnie umiejscowienie też poprawia sprzedaż – choć w mniejszym stopniu. Za to złe umiejscowienie obniża sprzedaż…
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                <div class="docInfo"><bdi>teaching/air-ml/2017l/labs/lab02.txt</bdi> · Last modified: 2018/03/08 12:01 by <bdi>pkleczek</bdi></div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y">
+
+            <!-- PAGE ACTIONS -->
+            <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=edit" class="action source" accesskey="v" rel="nofollow" title="Show pagesource [V]"><span>Show pagesource</span></a></li><li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]"><span>Old revisions</span></a></li><li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02&amp;do=backlink" class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://home.agh.edu.pl/~mdig/dokuwiki/doku.php?id=teaching:air-ml:2017l:labs:lab02#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer"><div class="pad">
+    
+    <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate"><img src="./Regresja liniowa [MDIG Group]_files/button-donate.gif" width="80" height="15" alt="Donate"></a>
+        <a href="http://php.net/" title="Powered by PHP"><img src="./Regresja liniowa [MDIG Group]_files/button-php.gif" width="80" height="15" alt="Powered by PHP"></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5"><img src="./Regresja liniowa [MDIG Group]_files/button-html5.png" width="80" height="15" alt="Valid HTML5"></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS"><img src="./Regresja liniowa [MDIG Group]_files/button-css.png" width="80" height="15" alt="Valid CSS"></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki"><img src="./Regresja liniowa [MDIG Group]_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki"></a>
+    </div>
+</div></div><!-- /footer -->
+
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="./Regresja liniowa [MDIG Group]_files/indexer.php" width="2" height="1" alt=""></div>
+    <div id="screen__mode" class="no"></div>
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Main, sans-serif;"></div></div></body></html>
